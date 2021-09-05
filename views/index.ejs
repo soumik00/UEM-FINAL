@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        border-radius: 1%;
+        border: 5px solid black;
+        font-family: "Courier New", Courier, monospace;
+        background-color: azure;
+      }
+      /* .container {
+        text-align: right;
+        width: 100%;
+        /* max-width: max-content; */
+
+      h2 {
+        margin-top: 25px;
+        margin-left: 0%;
+        display: inline;
+        max-width: fit-content;
+      }
+      .Tblog {
+        padding-left: 3px;
+        box-sizing: border-box;
+        border-left: 5px solid gray;
+        border-width: 50%;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        float: right;
+        width: 40%;
+      }
+      .postbutton {
+        margin-left: 50px;
+        margin-top: 10px;
+      }
+      .comment {
+        margin-left: 29px;
+        margin-top: 20px;
+        width: 100%;
+        height: 10%;
+      }
+      .inputcomment {
+        /* cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s; */
+        /* border: 1px solid black; */
+      }
+      .privat1 {
+        text-align: center;
+        margin-top: 400px;
+      }
+      .container {
+        /* border: 2% solid rgb(245, 229, 220); */
+        margin-left: 50px;
+        text-align: left;
+      }
+
+      .para {
+        text-align: center;
+        margin-top: 50px;
+      }
+      .loginame {
+        margin-top: 20px;
+        width: 70%;
+        text-align: right;
+        font-size: 20px;
+      }
+      .paragraph-styling {
+        margin-top: 10px;
+        color: red;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      textarea {
+        margin-top: 20px;
+        margin-left: 50px;
+        width: 600px;
+        height: 120px;
+        border: 3px solid #cccccc;
+        padding: 5px;
+        font-family: Tahoma, sans-serif;
+        background-image: url(bg.gif);
+        background-position: bottom right;
+        background-repeat: no-repeat;
+      }
+      .class2 {
+        margin-top: 10px;
+        margin-left: 600px;
+      }
+      .logout {
+        margin-left: 300px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="class2"><%= name %></h2>
+    <form action="/logout?_method=DELETE" method="POST">
+      <button type="submit" class="logout">Log Out</button>
+    </form>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" class="yname" />
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" />
+
+      <button type="submit" class="namebutton">Login</button>
+    </div>
+    <!-- <div class="loginame"></div> -->
+    <!-- <div>
+      <input type="text" placeholder="Title.." class="Title" />
+      <button class="titlesubmit">Submit</button>
+    </div>
+    <div class="titleoutput"></div> -->
+    <!-- blog section -->
+    <div class="Tblog"></div>
+    <!-- input blog -->
+    <!-- <input type="text" placeholder="Name" />
+    <input type="text" placeholder="blogTitle" /> -->
+    <!--  -->
+    <!-- <button class="submit">Submit</button> -->
+    <!-- <div>
+      <input type="text" placeholder="Blog title..." class="mytitle" />
+      <button class="title">Submit</button>
+    </div>
+    <div class="bolgtitle"></div> -->
+    <div class="MyPost">
+      <form action="">
+        <textarea placeholder="Write Your Blog"></textarea>
+      </form>
+      <button class="postbutton">Post</button>
+      <button class="private">Private Post</button>
+      <br />
+    </div>
+    <br />
+    <!--  -->
+    <div class="container">
+      <input id="inputField" type="text" placeholder="command box.." /><button
+        id="addToDo"
+      >
+        Command
+      </button>
+      <div class="to-dos" id="toDoContainer"></div>
+    </div>
+
+    <!--  -->
+    <!-- <div class="hName"></div> -->
+    <!-- private -->
+    <h3 class="privat1">Private Post</h3>
+    <p class="para"></p>
+    <script>
+      const postButton = document.querySelector(".postbutton");
+      const blog = document.querySelector(".Tblog");
+      //   const username = document.querySelector(".uname");
+      const login = document.querySelector(".namebutton");
+      const private = document.querySelector(".private");
+      const arr = [""];
+      //   const title = document.querySelector(".title");
+      //   const bolgtitle = document.querySelector(".bolgtitle");
+      // const submitName = document.querySelector(".submit");
+      // const userName2 = document.querySelector(".hName");
+      // submitName.addEventListener("click", function (e) {
+      //     e.preventDefault;
+      //     const Name = document.querySelector(".Name").value;
+      //     const blogTitle = document.querySelector(".blogTitle").value;
+      //     userName2.innerHTML = Name;
+
+      //   });
+      // const titleSubmit = document.querySelector(".titlesubmit");
+      // const titleoutput = document.querySelector(".titleoutput");
+      const privateSms = document.querySelector(".para");
+      const logiName = document.querySelector(".loginame");
+      // const commentSubmit = document.querySelector(".commentsubmit");
+      // const outputComment = document.querySelector(".inputcomment");
+      // const comment = document.querySelector(".comment");
+      const postBlog = document.querySelector("textarea");
+      // const privateSms = document.querySelector(".para");
+
+      alert("Welcome uem-blog-app 🙏");
+
+      // commentSubmit.addEventListener("click", function (e) {
+      //   e.preventDefault;
+      //   var paragraph = document.createElement("a");
+      //   paragraph.classList.add("paragraph-styling");
+
+      //   paragraph.innerText = comment.value;
+      //   outputComment.appendChild(paragraph);
+      //   comment.value = "";
+
+      //   //   outputComment.textContent = comment;
+      // });
+
+      //   title.addEventListener("click", function () {
+      //     const mytitle = document.querySelector(".mytitle");
+      //     bolgtitle.textContent = mytitle;
+      //   });
+
+      postButton.addEventListener("click", function (e) {
+        e.preventDefault;
+        var paragraph1 = document.createElement("a");
+        paragraph1.innerHTML = postBlog.value;
+        blog.appendChild(paragraph1);
+      });
+
+      // login
+      login.addEventListener("click", function (e) {
+        e.preventDefault;
+        const username = document.querySelector(".yname").value;
+        privateSms.remove();
+        alert(
+          "You can't write own private post because you not a register user...logout and register"
+        );
+        // username.value = " ";
+      });
+
+      // titlesubmit.addEventListener("click", function (e) {
+      //   e.preventDefault;
+      //   const put = document.querySelector(".Title").value;
+      //   titleoutput.innerHTML = put;
+      // });
+
+      private.addEventListener("click", function (e) {
+        e.preventDefault;
+
+        const postBlog = document.querySelector("textarea").value;
+        privateSms.textContent = postBlog;
+        login.addEventListener("click", function () {});
+      });
+
+      let addToDoButton = document.getElementById("addToDo");
+      let toDoContainer = document.getElementById("toDoContainer");
+      let inputField = document.getElementById("inputField");
+
+      addToDoButton.addEventListener("click", function () {
+        var paragraph = document.createElement("p");
+        paragraph.classList.add("paragraph-styling");
+        paragraph.innerText = inputField.value;
+        toDoContainer.appendChild(paragraph);
+        inputField.value = "";
+        paragraph.addEventListener("click", function () {
+          paragraph.style.textDecoration = "line-through";
+        });
+        paragraph.addEventListener("dblclick", function () {
+          toDoContainer.removeChild(paragraph);
+        });
+      });
+    </script>
+  </body>
+</html>
